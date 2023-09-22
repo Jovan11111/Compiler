@@ -1,0 +1,17 @@
+struct s{
+    int a;
+    int b;
+    float c;
+};
+
+struct ss{
+    char b;
+    char x;
+    int a;
+};
+
+int main(){
+    int a[5];
+    a[1].a = a[2].b;
+    return a[2].a.b + a[2].b.b.b;
+}

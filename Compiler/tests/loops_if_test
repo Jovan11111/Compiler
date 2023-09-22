@@ -1,0 +1,24 @@
+int main(){
+    if(a<b){
+        for(int i = 0; i < n; i++){
+            for(int i = 1; i < n;i++){
+                x = a+b*b;
+                x++;
+                i--;
+            }
+        }
+    }
+    else{
+        if(b< a){
+            while(a < n){
+                for(int a = 5; a < 6; i--){
+                    a = -b;
+                    b = !!a;
+                    c = a+b*c && a-b || a+b*c-d;
+                }
+            }
+        }
+
+    }
+
+}

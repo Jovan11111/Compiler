@@ -1,0 +1,17 @@
+int fun(int a, int b, float c){
+    a = 5;
+    return a+b-c;
+}
+
+void fun2(float a, char b, int x){
+    int c = a+b*x;
+    c = c++ + b*a;
+    return c;
+}
+
+int main(){
+    int x = fun(a, b);
+    int y = fun2(a, b, c);
+    int y = fun(fun2(a, b, c), fun2(b, a, c));
+    return 0;
+}

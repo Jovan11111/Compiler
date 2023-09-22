@@ -1,0 +1,114 @@
+Program       -> DeclarationList
+
+DeclarationList -> Declaration
+               | Declaration DeclarationList
+
+Declaration    -> VariableDeclaration
+               | FunctionDeclaration
+               | StructDeclaration
+
+VariableDeclaration -> TypeSpecifier Identifier ;
+                   | TypeSpecifier Identifier [ ConstantExpression ] ;
+
+TypeSpecifier -> int
+              | float
+              | char
+              | double
+              | struct Identifier
+
+FunctionDeclaration -> TypeSpecifier Identifier ( ParameterList ) CompoundStatement
+
+ParameterList -> Parameter
+              | Parameter , ParameterList
+
+Parameter     -> TypeSpecifier Identifier
+              | TypeSpecifier Identifier [ ]
+
+StructDeclaration -> struct Identifier { MemberList } ;
+
+MemberList    -> Member
+              | Member MemberList
+
+Member        -> TypeSpecifier Identifier ;
+              | TypeSpecifier Identifier [ ConstantExpression ] ;
+
+CompoundStatement -> { StatementList }
+
+StatementList -> Statement
+              | Statement StatementList
+
+Statement     -> ExpressionStatement
+              | IfStatement
+              | WhileStatement
+              | ForStatement
+              | ReturnStatement
+              | VariableDeclaration
+              | CompoundStatement
+              | ;
+
+ExpressionStatement -> Expression ;
+
+IfStatement   -> if ( Expression ) CompoundStatement
+
+              | if ( Expression ) CompoundStatement else CompoundStatement
+
+WhileStatement -> while ( Expression ) CompoundStatement
+
+ForStatement   -> for ( ForInitializer ; Expression ; ForUpdater ) CompoundStatement
+
+ForInitializer -> Expression
+              | VariableDeclaration
+
+ForUpdater    -> Expression
+              | VariableDeclaration
+
+ReturnStatement -> return Expression ;
+
+Expression    -> AssignmentExpression
+
+AssignmentExpression -> ConditionalExpression
+                   | Identifier = AssignmentExpression
+
+ConditionalExpression -> LogicalOrExpression
+                    | LogicalOrExpression ? Expression : ConditionalExpression
+
+LogicalOrExpression -> LogicalAndExpression
+                   | LogicalAndExpression || LogicalOrExpression
+
+LogicalAndExpression -> EqualityExpression
+                    | EqualityExpression && LogicalAndExpression
+
+EqualityExpression -> RelationalExpression
+                  | RelationalExpression == EqualityExpression
+                  | RelationalExpression != EqualityExpression
+
+RelationalExpression -> AdditiveExpression
+                    | AdditiveExpression < RelationalExpression
+                    | AdditiveExpression > RelationalExpression
+                    | AdditiveExpression <= RelationalExpression
+                    | AdditiveExpression >= RelationalExpression
+
+AdditiveExpression -> MultiplicativeExpression
+                  | MultiplicativeExpression + AdditiveExpression
+                  | MultiplicativeExpression - AdditiveExpression
+
+MultiplicativeExpression -> UnaryExpression
+                      | UnaryExpression * MultiplicativeExpression
+                      | UnaryExpression / MultiplicativeExpression
+                      | UnaryExpression % MultiplicativeExpression
+
+UnaryExpression -> PostfixExpression
+               | - UnaryExpression
+               | ! UnaryExpression
+
+PostfixExpression -> PrimaryExpression
+                 | PostfixExpression [ Expression ]
+                 | PostfixExpression ( ArgumentExpressionList )
+                 | PostfixExpression . Identifier
+                 | PostfixExpression -> Identifier
+                 | PostfixExpression ++
+                 | PostfixExpression --
+
+PrimaryExpression -> Identifier
+                | Constant
+                | StringLiteral

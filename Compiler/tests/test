@@ -1,0 +1,36 @@
+struct Tacka{
+    int x;
+    int y;
+};
+
+int saberi(int a, int b){
+    return a+b;
+}
+
+float pomnozi(float a, float b){
+    return a*b;
+}
+
+int main(){
+    int Tacke[5];
+    for(int i = 0; i < 5; i++){
+        t.x = saberi(i, i*i);
+        t.y = pomnozi(i, i++);
+    }
+
+    if(t.x || t.y){
+        Tacke[5].x = ! t.x;
+        Tacke[3].y = - t.y;
+    }
+    else{
+        saberi(pomnozi(t[5].x, t[3].x), pomnozi(a+s*s, a));
+    }
+
+    while(n > 4){
+        n++;
+        Tacke[5].x--;
+    }
+
+    return t.x - 2 && t.y;
+
+}
